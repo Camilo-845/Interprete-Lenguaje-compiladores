@@ -11,6 +11,7 @@ reserved  = {
     'guail': 'MIENTRAS',
     'por': 'POR',
     'es': 'IGUAL',
+    'mostrar': 'IMPRIMIR'
 }
 
 class Lexer(object):
@@ -81,9 +82,19 @@ class Lexer(object):
                  break
              print(tok)
 
+    def tokenizar(self,data):
+        tokens = []
+        self.lexer.input(data)
+        while True:
+            token = self.lexer.token()
+            if not token:
+                break
+            tokens.append(token)
+        return tokens
+
 # Build the lexer and try it out
 
 if __name__ == '__main__':
     m = Lexer()
     m.build()           # Build the lexer
-    m.test("(3 + 4) * 5 ;$hola 5*1 \n * si (falso) hola es 1 sino;")     # Test it
+    m.test("(3 + 4) * 5 ;$hola 5*1 \n * si (falso) == hola es 1 sino;")     # Test it
