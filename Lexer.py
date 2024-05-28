@@ -28,7 +28,6 @@ class Lexer(object):
         'CORCHETE_I',
         'CORCHETE_D',
         'FIN_SENTENCIA',
-        'IGUAL',
         'COMENTARIO',
         'ID'
     ] + list(reserved.values())
