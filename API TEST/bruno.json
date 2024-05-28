@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "Interprete Lenguage",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}
