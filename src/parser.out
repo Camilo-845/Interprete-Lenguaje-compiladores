@@ -1,0 +1,204 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    COMENTARIO
+    CORCHETE_D
+    CORCHETE_I
+    FALSO
+    FIN_SENTENCIA
+    ID
+    IGUAL
+    IMPRIMIR
+    MIENTRAS
+    PARENTESIS_D
+    PARENTESIS_I
+    POR
+    SI
+    SINO
+    TIPO_CADENA_TEXTO
+    TIPO_DECIMAL
+    TIPO_ENTERO
+    VARIABLE
+    VERDADERO
+
+Grammar
+
+Rule 0     S' -> expression
+Rule 1     expression -> term MAS term
+Rule 2     expression -> term MENOS term
+Rule 3     expression -> term
+Rule 4     term -> factor MULTIPLICA factor
+Rule 5     term -> factor DIVIDE factor
+Rule 6     term -> factor
+Rule 7     factor -> NUMERO
+
+Terminals, with rules where they appear
+
+COMENTARIO           : 
+CORCHETE_D           : 
+CORCHETE_I           : 
+DIVIDE               : 5
+FALSO                : 
+FIN_SENTENCIA        : 
+ID                   : 
+IGUAL                : 
+IMPRIMIR             : 
+MAS                  : 1
+MENOS                : 2
+MIENTRAS             : 
+MULTIPLICA           : 4
+NUMERO               : 7
+PARENTESIS_D         : 
+PARENTESIS_I         : 
+POR                  : 
+SI                   : 
+SINO                 : 
+TIPO_CADENA_TEXTO    : 
+TIPO_DECIMAL         : 
+TIPO_ENTERO          : 
+VARIABLE             : 
+VERDADERO            : 
+error                : 
+
+Nonterminals, with rules where they appear
+
+expression           : 0
+factor               : 4 4 5 5 6
+term                 : 1 1 2 2 3
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . expression
+    (1) expression -> . term MAS term
+    (2) expression -> . term MENOS term
+    (3) expression -> . term
+    (4) term -> . factor MULTIPLICA factor
+    (5) term -> . factor DIVIDE factor
+    (6) term -> . factor
+    (7) factor -> . NUMERO
+
+    NUMERO          shift and go to state 4
+
+    expression                     shift and go to state 1
+    term                           shift and go to state 2
+    factor                         shift and go to state 3
+
+state 1
+
+    (0) S' -> expression .
+
+
+
+state 2
+
+    (1) expression -> term . MAS term
+    (2) expression -> term . MENOS term
+    (3) expression -> term .
+
+    MAS             shift and go to state 5
+    MENOS           shift and go to state 6
+    $end            reduce using rule 3 (expression -> term .)
+
+
+state 3
+
+    (4) term -> factor . MULTIPLICA factor
+    (5) term -> factor . DIVIDE factor
+    (6) term -> factor .
+
+    MULTIPLICA      shift and go to state 7
+    DIVIDE          shift and go to state 8
+    MAS             reduce using rule 6 (term -> factor .)
+    MENOS           reduce using rule 6 (term -> factor .)
+    $end            reduce using rule 6 (term -> factor .)
+
+
+state 4
+
+    (7) factor -> NUMERO .
+
+    MULTIPLICA      reduce using rule 7 (factor -> NUMERO .)
+    DIVIDE          reduce using rule 7 (factor -> NUMERO .)
+    MAS             reduce using rule 7 (factor -> NUMERO .)
+    MENOS           reduce using rule 7 (factor -> NUMERO .)
+    $end            reduce using rule 7 (factor -> NUMERO .)
+
+
+state 5
+
+    (1) expression -> term MAS . term
+    (4) term -> . factor MULTIPLICA factor
+    (5) term -> . factor DIVIDE factor
+    (6) term -> . factor
+    (7) factor -> . NUMERO
+
+    NUMERO          shift and go to state 4
+
+    term                           shift and go to state 9
+    factor                         shift and go to state 3
+
+state 6
+
+    (2) expression -> term MENOS . term
+    (4) term -> . factor MULTIPLICA factor
+    (5) term -> . factor DIVIDE factor
+    (6) term -> . factor
+    (7) factor -> . NUMERO
+
+    NUMERO          shift and go to state 4
+
+    term                           shift and go to state 10
+    factor                         shift and go to state 3
+
+state 7
+
+    (4) term -> factor MULTIPLICA . factor
+    (7) factor -> . NUMERO
+
+    NUMERO          shift and go to state 4
+
+    factor                         shift and go to state 11
+
+state 8
+
+    (5) term -> factor DIVIDE . factor
+    (7) factor -> . NUMERO
+
+    NUMERO          shift and go to state 4
+
+    factor                         shift and go to state 12
+
+state 9
+
+    (1) expression -> term MAS term .
+
+    $end            reduce using rule 1 (expression -> term MAS term .)
+
+
+state 10
+
+    (2) expression -> term MENOS term .
+
+    $end            reduce using rule 2 (expression -> term MENOS term .)
+
+
+state 11
+
+    (4) term -> factor MULTIPLICA factor .
+
+    MAS             reduce using rule 4 (term -> factor MULTIPLICA factor .)
+    MENOS           reduce using rule 4 (term -> factor MULTIPLICA factor .)
+    $end            reduce using rule 4 (term -> factor MULTIPLICA factor .)
+
+
+state 12
+
+    (5) term -> factor DIVIDE factor .
+
+    MAS             reduce using rule 5 (term -> factor DIVIDE factor .)
+    MENOS           reduce using rule 5 (term -> factor DIVIDE factor .)
+    $end            reduce using rule 5 (term -> factor DIVIDE factor .)
+

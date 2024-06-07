@@ -46,6 +46,8 @@ class Lexer(object):
     t_ignore_COMMENT = r'\$.*'
 
     # A regular expression rule with some action code
+    def __init__ (self):
+        self.lexer = lex.lex(module=self)
     def t_ID(self,t):
         r'[a-zA-Z_][a-zA-Z_0-9]*'
         t.type = reserved.get(t.value, 'ID')   # Check for reserved words
@@ -67,10 +69,6 @@ class Lexer(object):
     def t_error(self,t):
         print("Illegal character '%s'" % t.value[0])
         t.lexer.skip(1)
-
-    # Build the lexer
-    def build(self,**kwargs):
-        self.lexer = lex.lex(module=self, **kwargs)
 
     # Test it output
     def test(self,data):
