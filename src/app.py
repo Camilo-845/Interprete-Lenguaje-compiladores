@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify, abort
 from Lexer import Lexer
 from Parser import Parser
 import json
+import os
 
 app = Flask(__name__)
 
@@ -35,4 +36,5 @@ def interpretar():
      abort(500, description = "Error interno")
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = os.environ.get('PORT', 5000)
+    app.run(port=port, debug=False)
