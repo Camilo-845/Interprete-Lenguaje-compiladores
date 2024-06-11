@@ -5,7 +5,13 @@ meta {
 }
 
 post {
-  url: http://localhost:5000/tasks
-  body: none
+  url: http://localhost:5000/lexer
+  body: json
   auth: none
+}
+
+body:json {
+  {
+    "data": "#hola es 10 -1"
+  }
 }

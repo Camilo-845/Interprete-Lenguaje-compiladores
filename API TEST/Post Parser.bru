@@ -1,0 +1,17 @@
+meta {
+  name: Post Parser
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:5000/parser
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "data": "(10*2)-1"
+  }
+}

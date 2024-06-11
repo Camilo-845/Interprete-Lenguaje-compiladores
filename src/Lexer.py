@@ -3,6 +3,9 @@ import ply.lex as lex
 reserved  = {
     'si': 'SI',
     'sino': 'SINO',
+    'entonces': 'ENTONCES',
+    'mayor': 'MAYOR',
+    'menor': 'MENOR',
     'decimal': 'TIPO_DECIMAL',
     'entero': 'TIPO_ENTERO',
     'verdadero':'VERDADERO',
@@ -10,8 +13,10 @@ reserved  = {
     'letras': 'TIPO_CADENA_TEXTO',
     'guail': 'MIENTRAS',
     'por': 'POR',
-    'es': 'IGUAL',
-    'mostrar': 'IMPRIMIR'
+    'igual': 'IGUAL',
+    'es': 'ASIGNACION',
+    'mostrar': 'IMPRIMIR',
+    'hacer': 'DO_WHILE'
 }
 
 class Lexer(object):
@@ -93,5 +98,4 @@ class Lexer(object):
 
 if __name__ == '__main__':
     m = Lexer()
-    m.build()           # Build the lexer
-    m.test("(3 + 4) * 5 ;$hola 5*1 \n * si (falso) == hola es 1 sino;")     # Test it
+    m.test("(3 + 4) * 5 ;$hola 5*1 \n * si (falso) == hola es 1 sino; 10 igual 15")     # Test it
