@@ -6,11 +6,13 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), 'src')))
 
 # Importaciones necesarias
 from flask import Flask, request, jsonify, abort
+from flask_cors import CORS
 from Lexer.Lexer import Lexer
 from Parser.Parser import Parser
 import json
 
 app = Flask(__name__)
+CORS(app, origins='*')
 
 lex1 = Lexer()
 
